@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Preview</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="js/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="js/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="js/owl-carousel/owl.transitions.css">
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl-carousel/owl.carousel.js"></script>
+        <!-- added for netbeans error -->
+        <link rel="shortcut icon" href="">
+        <!-- TODO append to stylesheet somewhere -->
+        <style type="text/css">
+            img.body_bg {
+                opacity: 0.4;
+                filter: alpha(opacity=40); /* For IE8 and earlier */
+            }
+            .scrollable-menu {
+                background: #000\9;
+                z-index: 1080;
+                height: auto;
+                max-height: 200px;
+                overflow-x: hidden;
+            }
+
+            path.slice{
+                stroke-width:2px;
+            }
+
+            polyline{
+                opacity: .3;
+                stroke: black;
+                stroke-width: 2px;
+                fill: none;
+            }
+            #plot:before{
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 50;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                background-image: url("img/bg_body.png");
+                background-size: 600px 500px;
+                background-repeat: no-repeat;
+                width: 700px;
+                height: 600px;
+                background-position: 50% 70%;
+                opacity: 0.3;
+            }
+            #owl-side-top .item{
+                margin: 3px;
+            }
+            #owl-side-top .item img{
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            #owl-side-bottom .item{
+                margin: 3px;
+            }
+            #owl-side-bottom .item img{
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            #owl_1 .item img{
+                display: block;
+                width: 100%;
+                height: auto;
+                z-index: 3;
+            }
+            #owl_2 .item img{
+                display: block;
+                width: 100%;
+                height: auto;
+                z-index: 3;
+            }
+
+            #owl_3 .item img{
+                display: block;
+                width: 100%;
+                height: auto;
+                z-index: 3;
+            }
+            #slider .slider-selection {
+                background: #BABBBA;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function() {
+                $("#topic1").toggle();
+                $("#topic2").toggle();
+                $("#topic3").toggle();
+                $("#topic4").toggle();
+
+                $("#owl-side-top").owlCarousel({
+                    autoPlay: 4000, //Set AutoPlay to 3 seconds
+                    pagination: false,
+                    items: 1,
+                    itemsDesktop: [1199, 3],
+                    itemsDesktopSmall: [979, 3]
+                });
+
+                $("#owl-side-bottom").owlCarousel({
+                    autoPlay: 4000, //Set AutoPlay to 3 seconds
+                    pagination: false,
+                    items: 1,
+                    itemsDesktop: [1199, 3],
+                    itemsDesktopSmall: [979, 3]
+
+                });
+
+                $("#owl_1").owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
+                });
+
+                $("#owl_2").owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
+                });
+
+                $("#owl_3").owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true
+                });
+            });
+
+            function show(who) {
+                if (who === 1) {
+                    $("#topic1").toggle();
+                    $("#topic2").hide();
+                    $("#topic3").hide();
+                    $("#topic4").hide();
+                }
+
+                if (who === 2) {
+                    $("#topic1").hide();
+                    $("#topic2").toggle();
+                    $("#topic3").hide();
+                    $("#topic4").hide();
+                }
+
+                if (who === 3) {
+                    $("#topic1").hide();
+                    $("#topic2").hide();
+                    $("#topic3").toggle();
+                    $("#topic4").hide();
+                }
+
+                if (who === 4) {
+                    $("#topic1").hide();
+                    $("#topic2").hide();
+                    $("#topic3").hide();
+                    $("#topic4").toggle();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="question" class="panel-heading" style="margin-left: -3%;margin-bottom: 10px;padding-bottom: 20px; width:100%;text-align: center;">
+                <img src="img/lifec_head.png" alt="header" >
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default" style="border-color: black;text-align: center"><!-- META-INFO PANEL START-->
+                        <div id="question" class="panel-heading" style="margin-bottom: 10px;padding-bottom: 20px;background-color: white;border-color: black">Individual plots 
+                        </div>
+                        <div id="meta-content" >
+                            <div id="owl-side-top">
+                                <div class="item"><img src="img/side/Dia1.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia2.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia3.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia4.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia5.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia6.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia7.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia8.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia9.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia10.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia11.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia12.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia13.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia14.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia15.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia16.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia17.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia18.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia19.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia20.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia21.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia22.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia23.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia24.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia25.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia26.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia27.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia28.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia29.png" alt="dia"></div>
+                            </div>
+                        </div>
+                        <div id="meta-content" >
+                            <div id="owl-side-bottom">
+                                <div class="item"><img src="img/side/Dia30.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia31.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia32.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia33.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia34.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia35.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia36.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia37.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia38.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia39.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia40.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia41.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia42.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia43.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia44.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia45.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia46.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia47.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia48.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia49.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia50.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia51.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia52.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia53.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia54.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia55.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia56.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia57.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia58.png" alt="dia"></div>
+                                <div class="item"><img src="img/side/Dia59.png" alt="dia"></div>
+                            </div>
+                        </div>
+                    </div> <!-- META-INFO PANEL END -->             
+                </div><!-- PANEL LEFT END-->
+                <div class="col-md-8"> 
+                    <div class="panel panel-default" style="border:none">
+                        <div class="panel-heading" style="position: relative;left:25px;padding-bottom: 20px;background-color: white">
+
+                            <div class="btn-group btn-group-justified">
+                                <a href="#" class="btn btn-primary glyphicon glyphicon-signal" style="background-color: black;border-color: white; z-index: 2" onclick="show(1)"> </a>
+                                <a href="#" class="btn btn-primary glyphicon glyphicon-list-alt" style="background-color: black;border-color: white; z-index: 2" onclick="show(2)"></a>
+                                <a href="#" class="btn btn-primary glyphicon glyphicon-screenshot" style="background-color: black;border-color: white; z-index: 2" onclick="show(3)"></a>
+                                <a href="#" class="btn btn-primary glyphicon glyphicon-transfer" style="background-color: black;border-color: white; z-index: 2" onclick="show(4)"></a>
+                            </div>
+                        </div>
+                        <!-- START DRAW PLOT-->
+                        <div id="plot" class="panel-body">
+                            <!-- start partials-->
+                            <div id="topic1" style="text-align: center">
+                                <div id="owl_1" class="owl-carousel owl-theme" style="z-index: 5">
+                                    <div class="item"><img src="img/intro/Dia6.png" alt="dia 6" style="position: relative;left: 50px"></div>
+                                    <div class="item"><img src="img/intro/Dia7.png" alt="dia 7" style="width:80%;"></div>
+                                    <div class="item"><img src="img/intro/Dia1.png" alt="dia 1" style="width:80%;"></div>
+                                    <div class="item"><img src="img/intro/Dia2.png" alt="dia 2" style="width:80%;"></div>
+                                    <div class="item"><img src="img/intro/Dia3.png" alt="dia 3" style="width:80%;"></div>
+                                    <div class="item"><img src="img/intro/Dia4.png" alt="dia 4" style="width:80%;"></div>
+                                    <div class="item"><img src="img/intro/Dia5.png" alt="dia 5" style="width:80%;"></div>
+                                </div>
+                            </div>
+                            <div id="topic2">
+                                <div id="owl_2" class="owl-carousel owl-theme" style="z-index: 5">
+
+                                    <div class="item"><img src="img/dv/Dia1.PNG" alt="dia 1"></div>
+                                    <div class="item"><img src="img/dv/Dia2.PNG" alt="dia 2"></div>
+                                    <div class="item"><img src="img/dv/Dia3.PNG" alt="dia 3"></div>
+                                    <div class="item"><img src="img/dv/Dia4.PNG" alt="dia 4"></div>
+                                    <div class="item"><img src="img/dv/Dia5.PNG" alt="dia 5"></div>
+                                    <div class="item"><img src="img/dv/Dia6.PNG" alt="dia 6"></div>
+                                    <div class="item"><img src="img/dv/Dia7.PNG" alt="dia 7"></div>
+                                </div>
+
+                            </div>
+                            <div id="topic3">
+                                <div id="owl_3" class="owl-carousel owl-theme" style="z-index: 5">
+
+                                    <div class="item"><img src="img/fi/Dia1.PNG" alt="dia 1"></div>
+                                    <div class="item"><img src="img/fi/Dia2.PNG" alt="dia 2"></div>
+                                    <div class="item"><img src="img/fi/Dia3.PNG" alt="dia 3"></div>
+                                    <div class="item"><img src="img/fi/Dia4.PNG" alt="dia 4"></div>
+                                    <div class="item"><img src="img/fi/Dia5.PNG" alt="dia 5"></div>
+                                    <div class="item"><img src="img/fi/Dia6.PNG" alt="dia 6"></div>
+                                    <div class="item"><img src="img/fi/Dia7.PNG" alt="dia 7"></div>
+                                    <div class="item"><img src="img/fi/Dia8.PNG" alt="dia 8"></div>
+                                </div>
+
+                            </div>
+
+
+                            <div id="topic4" style="text-align: center">
+                                <p><h4>Take into account from tweets:<br>
+                                    Gender<br>
+                                    Age<br>
+                                    Mood<br></h4>
+                                </p>
+                                <p><h4>Take into account from song:<br>
+                                    Genre<br>
+                                    Tempo<br>
+                                    Familiarity<br></h4>
+                                </p>
+                            </div>
+                            <!-- end partials-->
+                        </div>
+                    </div>
+
+                </div><!-- PANEL RIGHT END-->
+                <div class="col-md-1"> 
+                    <div class="panel panel-default" style="margin-left: 135px;border: none" >
+
+                        <!-- START DRAW PLOT-->
+                        <div class="panel-body">
+                            <img src="img/border.png" alt="body" style="height: 525px">
+                        </div>
+                    </div>
+
+                </div><!-- PANEL RIGHT END-->
+            </div>
+
+        </div><!-- /.container -->
+
+    </body>
+</html>

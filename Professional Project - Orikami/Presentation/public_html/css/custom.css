@@ -1,0 +1,110 @@
+body {
+    padding-bottom: 0;
+}
+.jumbotron {
+    height: 210px;
+    background:
+        #fff url('../img/slide_bg2.png') center center;
+    background-size: cover;
+}
+.not_front .jumbotron {
+    border-bottom: 1px solid #23527c;
+}
+.contact .jumbotron {
+    display: none;
+}
+
+.contact #map {
+    width: 100%;
+    height: 300px;
+}
+
+h1.page-header {
+    color: White;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    text-shadow: 1px 1px #000000;
+    border-bottom: 0;
+}
+#footer {
+    background-color: #f2f2f2;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+.responsive-utilities td.is-visible {
+    color: #468847;
+    background-color: #dff0d8!important;
+}
+.responsive-utilities td.is-hidden {
+    color: #ccc;
+    background-color: #f9f9f9!important;
+}
+.partners img {
+    width: 175px;
+}
+
+
+/*********************************** 
+ * Donut
+ **********************************/
+.scrollable-menu {
+    background: #000\9;
+    z-index: 1080;
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+path.slice{
+    stroke-width:2px;
+}
+
+polyline{
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
+#slider .slider-selection {
+    background: #BABBBA;
+}
+/*********************************** 
+ * /Donut
+ **********************************/
+
+.available {
+    background-color: #5cb85c;
+    color: white;
+    text-shadow: 1px 1px #f2f2f2;
+    
+}
+.tba {
+    background-color: #31b0d5;
+    color: white;
+    text-shadow: 1px 1px #f2f2f2;
+}
+.available span,
+.tba span {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}
+
+.media-left, .media>.pull-left {
+    padding-right: 20px;
+}
+.media-left img {
+    /*padding-top: 10px;*/
+}
+
+.partners h4 {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .navbar-header {
+        display: none;
+    }
+}

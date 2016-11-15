@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Interactive Data Visualization</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/full-width-pics.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#topMovies').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'World\'s movies with highest gross 2007-2011'
+                },
+                subtitle: {
+                    text: 'Source: <a href="https://public.tableau.com/s/sites/default/files/media/HollywoodsMostProfitableStories.csv">Tableau Resource</a>'
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -60,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Gross (millions)'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: 'Total Gross: <b>{point.y:.1f} millions</b>'
+                },
+                series: [{
+                    name: 'Movies',
+                    data: [
+                        ['The Twilight Saga: New Moon', 709.82],
+                        ['Twilight: Breaking Dawn', 702.17],
+                        ['Mamma Mia!', 609.473955],
+                        ['WALL-E', 521.283432],
+                        ['Sex and the City', 415.253258],
+                        ['Twilight', 376.661],
+                        ['Tangled', 355.08],
+                        ['Enchanted', 340.487652],
+                        ['The Proposal', 314.7],
+                        ['Sex and the City 2', 288.35],
+                        ['The Curious Case of Benjamin Button', 285.431],
+                        ['High School Musical 3: Senior Year', 252.044501],
+                        ['It\'s Complicated', 224.6],
+                        ['What Happens in Vegas', 219.367646],
+                        ['Knocked Up', 219.001261],
+                        ['Valentine\'s Day', 217.57],
+                        ['Marley and Me', 206.073],
+                        ['The Ugly Truth', 205.3],
+                        ['Gnomeo and Juliet', 193.967],
+                        ['He\'s Just Not That Into You', 178.84]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+        });
+    </script>
+
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Create the chart
+            $('#topStudios').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Top Movie Studios and their movies with a total Gross for 2007-2011'
+                },
+                subtitle: {
+                    text: 'Click the columns to view movies.'
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total Worldwide Gross $(millions)'
+                    }
+
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '${point.y:.1f}'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">Gross of {point.name}</span>: <b>${point.y:.2f}</b> million<br/>'
+                },
+
+                series: [{
+                    name: 'Studios',
+                    colorByPoint: true,
+                    data: [{
+                        name: 'Warner Bros.',
+                        y: 2081,
+                        drilldown: 'Warner Bros.'
+                    }, {
+                        name: 'Disney',
+                        y: 2021,
+                        drilldown: 'Disney'
+                    }, {
+                        name: 'Independent',
+                        y: 1547,
+                        drilldown: 'Independent'
+                    }, {
+                        name: 'Summit',
+                        y: 1242,
+                        drilldown: 'Summit'
+                    }, {
+                        name: 'Universal',
+                        y: 1183,
+                        drilldown: 'Universal'
+                    }, {
+                        name: 'Fox',
+                        y: 723,
+                        drilldown: 'Fox'
+                    }]
+                }],
+                drilldown: {
+                    series: [{
+                        name: 'Warner Bros.',
+                        id: 'Warner Bros.',
+                        data: [
+                            [
+                                'Sex and the City',
+                                415.3
+                            ],
+                            [
+                                'Sex and the City 2',
+                                288.4
+                            ],
+                            [
+                                'The Curious Case of Benjamin Button',
+                                285.4
+                            ],
+                            [
+                                'Valentine\'s Day',
+                                217.6
+                            ],
+                            [
+                                'He\'s Just Not That Into You',
+                                178.8
+                            ],
+                            [
+                                'Four Christmases',
+                                161.8
+                            ]
+                        ]
+                    }, {
+                        name: 'Disney',
+                        id: 'Disney',
+                        data: [
+                            [
+                                'WALL-E',
+                                521.3
+                            ],
+                            [
+                                'Tangled',
+                                355.1
+                            ],
+                            [
+                                'Enchanted',
+                                340.5
+                            ],
+                            [
+                                'The Proposal',
+                                314.7
+                            ],
+                            [
+                                'High School Musical 3: Senior Year',
+                                252.0
+                            ],
+                            [
+                                'Gnomeo and Juliet',
+                                194.0
+                            ],
+                            [
+                                'When in Rome',
+                                43.0
+                            ]
+                        ]
+                    }, {
+                        name: 'Independent',
+                        id: 'Independent',
+                        data: [
+                            [
+                                'Twilight: Breaking Down',
+                                702.2
+                            ],
+                            [
+                                'The Ugly Truth',
+                                205.3
+                            ],
+                            [
+                                'P.S. I Love You',
+                                153.1
+                            ],
+                            [
+                                'Life as We Know It',
+                                96.2
+                            ],
+                            [
+                                'Something Borrowed',
+                                60.2
+                            ],
+                            [
+                                'Tyler Perry\'s Why Did I get Married',
+                                55.9
+                            ],
+                            [
+                                'One Day',
+                                55.2
+                            ]
+                        ]
+                    }, {
+                        name: 'Summit',
+                        id: 'Summit',
+                        data: [
+                            [
+                                'The Twilight Saga: New Moon',
+                                709.8
+                            ],
+                            [
+                                'Twilight',
+                                376.7
+                            ],
+                            [
+                                'Letter to Juliet',
+                                79.2
+                            ],
+                            [
+                                'Remember Me',
+                                55.9
+                            ],
+                            [
+                                'Penelope',
+                                20.7
+                            ]
+                        ]
+                    }, {
+                        name: 'Universal',
+                        id: 'Universal',
+                        data: [
+                            [
+                                'Mamma Mia!',
+                                609.5
+                            ],
+                            [
+                                'It\'s Complicated',
+                                224.6
+                            ],
+                            [
+                                'Knocked Up',
+                                219.0
+                            ],
+                            [
+                                'Love Happens',
+                                36.1
+                            ],
+                            [
+                                'Leap Year',
+                                32.6
+                            ]
+                        ]
+                    }, {
+                        name: 'Fox',
+                        id: 'Fox',
+                        data: [
+                            [
+                                'What Happens in Vegas',
+                                219.4
+                            ],
+                            [
+                                'Marley and Me',
+                                206.1
+                            ],
+                            [
+                                '27 Dresses',
+                                160.3
+                            ],
+                            [
+                                '(500) Days of Summer',
+                                60.7
+                            ],
+                            [
+                                'Love & Other Drugs',
+                                54.5
+                            ]
+                        ]
+                    }]
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#topAudiances').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Top Studios with the highest average audiance score'
+                },
+                subtitle: {
+                    text: ' '
+                },
+                xAxis: {
+                    categories: ['Summit', 'Disney', 'Sony', 'Fox', 'Universal'],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Average % of Audiance Score',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: '%'
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    enabled:false
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Score',
+                    data: [73.20, 71.86, 69.50, 69.00, 64.57],
+                    dataLabels:{
+                        format: '{point.y:.1f}'
+                    }
+                }
+                ]
+            });
+        });
+    </script>
+
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Set up the chart
+            var chart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'container',
+                    type: 'column',
+                    margin: 175,
+                    options3d: {
+                        enabled: true,
+                        alpha: 15,
+                        beta: 15,
+                        depth: 50,
+                        viewDistance: 25
+                    }
+                },
+                title: {
+                    text: 'Top Movies by Audiance Score in % (3D chart Rotation)'
+                },
+                xAxis:{
+                    categories: ['A Dangerous Method', 'WALL-E', 'Tangled', 'Across The Universe', 'Midnight in Paris', 'Knocked Up', 'Twilight', '(500) Days of Summer', 'Sex and the City', 'The Curious Case of Benjamin Button', 'Beginners', 'Enchanted', 'The Twilight Saga: New Moon'],
+                    title: {
+                        text: null
+                    }
+                },
+                subtitle: {
+                    text: 'Drag the sliders below to rotate the chart'
+                },
+                plotOptions: {
+                    column: {
+                        depth: 30
+
+                    }
+                },
+                series: [{
+                    name: 'Summit',
+                    data: [null, null, null, null, null, null, 82, null,null, null, null, null, 78]
+                },{
+                    name: 'Disney',
+                    data: [null, 89, 88, null, null, null, null, null, null, null,null, 80,null]
+                },{
+                    name: 'Sony',
+                    data: [null, null, null, null, 84, null, null, null, null, null,null, null,null]
+                },{
+                    name: 'Fox',
+                    data: [null, null, null, null, null, null, null, 81, null, null,null, null,null]
+                },{
+                    name: 'Independent',
+                    data: [89, null, null, 84, null, null, null, null, null,null, 80,null]
+                },{
+                    name: 'Universal',
+                    data: [null, null, null, null, null, 83, null, null, null,null, null,null]
+                },{
+                    name: 'Warner Bros.',
+                    data: [null, null, null, null, null, null, null, null, 81, 81,null, null,null]
+                }]
+            });
+
+            function showValues() {
+                $('#R0-value').html(chart.options.chart.options3d.alpha);
+                $('#R1-value').html(chart.options.chart.options3d.beta);
+            }
+
+            // Activate the sliders
+            $('#R0').on('change', function () {
+                chart.options.chart.options3d.alpha = this.value;
+                showValues();
+                chart.redraw(false);
+            });
+            $('#R1').on('change', function () {
+                chart.options.chart.options3d.beta = this.value;
+                showValues();
+                chart.redraw(false);
+            });
+
+            showValues();
+        });
+    </script>
+
+</head>
+
+<body>
+
+
+    <!-- Full Width Image Header with Logo -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+    <header class="image-bg-fluid-height">
+
+    </header>
+
+    <!-- Content Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-heading">Data Visualization Assignment</h1>
+                    <p class="lead section-lead">Hollywood Movie Dataset 2007-2011</p>
+                    <p class="section-paragraph">Having this dataset could help us to look through the movies with the highest gross rate in the period of 2007-2011.
+                                                The following visualizations could help us to understand poeple's preferences and find the most succesfull studios in Hollywood.
+                                                The questons that I am going to answer are as follow:
+                                                <ul>
+                                                    <li>What are the most succesfull movies?</li>
+                                                    <li>What are the most succesfull studios and their movies?</li>
+                                                    <li>What are the highest rated studios by the audiance?</li>
+                </ul></p>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Fixed Height Image Aside -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+    <aside class="image-bg-fixed-height"></aside>
+
+    <!-- Content Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="lead section-lead">World's movies with highest Gross</p>
+                    <p class="section-paragraph">First we will identify the movies that earned most money. Below we can see the graph
+                                                that Twilight is on the first place, from which we can assume that due to an already
+                                                released book, poeple had much more interest. Advertisements could play an important
+                                                role as well. Another assumption that we can make is that gross more or less
+                                                presents the demand of people to watch certain movie. As more poeple visit it the gross
+                                                will increase.</p>
+                    <div id="topMovies" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                    <p class="lead section-lead">Top Movie Studios and their movies with a total Gross</p>
+                    <p class="section-paragraph">In the graph below we can see the top movie studios and the movies they released. An
+                                                interesting outlier is the 'Independent' studio, by looking at its movies we can assume
+                                                that its Twilight movie brought it to third place, while the rest films are lower on average
+                                                compared to the other studios. Same we could assume for the 'Summit' studio which had its gross
+                                                incereased thanks to the Twilight movies. More or less we can conclude that Twilight turned into
+                                                franchise and helped both studios.</p>
+                    <div id="topStudios" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                    <p class="lead section-lead">Top Studios sorted by audiance score</p>
+                    <p class="section-paragraph">Now after knowing the top studios by their gross, let's check the average audiance score of the
+                                                studios to see which comes in top place.</p>
+                    <div id="topAudiances" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                    <p class="lead section-lead">Top Movies sorted by audiance score</p>
+                    <p class="section-paragraph">In the below graph we see the top movies that received the highest audiance score
+                                                along with their studios. We can say that WALL-E satisfied most of its clients. While
+                                                the other movies had a huge demand by the visitors, they tended to score less rating, where
+                                                some movies are not even in the top for audiance score. As a conclusion we can say that Disney
+                                                is one of the most succesfull and satisfied movie studios for the period 2007-2011.</p>
+                    <div id="container"></div>
+                    <div id="sliders" style="min-width: 310px; height: 400px; margin: 0 auto">
+                        <table>
+                            <tr><td>Alpha Angle</td><td><input id="R0" type="range" min="0" max="45" value="15"/> <span id="R0-value" class="value"></span></td></tr>
+                            <tr><td>Beta Angle</td><td><input id="R1" type="range" min="0" max="45" value="15"/> <span id="R1-value" class="value"></span></td></tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Dan Velev 2015</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
